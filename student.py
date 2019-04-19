@@ -24,13 +24,12 @@ class Coctail:
     def mix(self):
         self.mixed = True
 
-
     @property
     def level(self):
         lvl = 0
         for name in self.alcohols:
-            lvl += self.alcohols[name].degree * self.counts[name] / self.volume
-        return lvl * self.volume
+            lvl += self.alcohols[name].degree * self.counts[name]
+        return lvl
 
 
 class Student:
@@ -41,6 +40,12 @@ class Student:
         self.img = img
         self.wish = None
         self.waiting = 0
+
+
+
+        self.position = None
+
+        self.coord = (0, 100)
 
     def add_alco(self, coctail):
         curr_alco = self.alco_lvl + coctail.level
