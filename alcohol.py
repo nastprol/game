@@ -1,9 +1,9 @@
 class Alcohol:
-    def __init__(self, name, degree, level, path):
+    def __init__(self, name, degree, volume, path):
         self.name = name
         self.degree = degree
         self.img = path
-        self.count = level
+        self.count = volume
 
 
 class Coctail:

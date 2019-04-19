@@ -1,10 +1,17 @@
 from player import Player
 from bar import Bar
 import pygame
+from alcohol import Alcohol
 
 
 class Event:
     def __init__(self):
+        self.alcs = {
+            'Коньяк' : Alcohol('Коньяк', 40, 2, 'img...'),
+            'Водка' : Alcohol('Водка', 40, 2, 'llll...'),
+            'Пиво' : Alcohol('Пиво', 2, 5, 'kkdfgkldf'),
+            'Кола' : Alcohol('Кола', 0, 9, 'dfgdfg'),
+        }
         self.students = [] #add students
         alcs = []
         self.bar = Bar(alcs)
