@@ -34,10 +34,13 @@ class Coctail:
 
 
 class Student:
-    def __init__(self, happiness, alco_lvl, max_alco):
+    def __init__(self, happiness, alco_lvl, max_alco, img):
         self.happiness = happiness
         self.alco_lvl = alco_lvl
         self.max_alco = max_alco
+        self.img = img
+        self.wish = None
+        self.waiting = 0
 
     def add_alco(self, coctail):
         curr_alco = self.alco_lvl + coctail.level
@@ -48,3 +51,7 @@ class Student:
         coef = (self.max_alco - curr_alco) / self.max_alco
 
         self.happiness += coef * coctail.level
+
+    def update(self):
+        self.happiness -= 0.01
+        self.alco_lvl -= 0.2
