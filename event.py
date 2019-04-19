@@ -16,13 +16,33 @@ class Game:
             'Пиво' : Alcohol('Пиво', 2, 5, 'kkdfgkldf'),
             'Кола' : Alcohol('Кола', 0, 9, 'dfgdfg'),
         }
-        self.students = [Student(0, 0, 50, pygame.image.load('img/student1.png')), Student(20, 20, 99, pygame.image.load('img/student2.png'))] #add students
+
+        self.students = [Student(0, 0, 50, pygame.image.load('img/student1.png'), 30), Student(20, 20, 99, pygame.image.load('img/student2.png'), 40)] #add students
         self.active_students = []
 
         self.back = pygame.image.load('img/Oblivion_1920x1080.jpg')
+        self.cloud = pygame.image.load('img/cloud.png')
+        self.cloud = pygame.transform.scale(self.cloud, (90, 90))
+
         self.back = pygame.transform.scale(self.back, (WIDTH, HEIGHT))
         self.bar_img = pygame.image.load('img/bar.png')
         self.bar_img = pygame.transform.scale(self.bar_img, (WIDTH, HEIGHT))
+
+        self.alco_spot = pygame.image.load('img/alco_spot.png')
+        self.alco_spot = pygame.transform.scale(self.alco_spot, (80, 150))
+
+        self.beer = pygame.image.load('img/beer.png')
+        self.beer = pygame.transform.scale(self.beer, (60, 100))
+        self.vodka = pygame.image.load('img/vodka.png')
+        self.vodka = pygame.transform.scale(self.vodka, (60, 100))
+
+        self.glass = pygame.image.load('img/glass.png')
+        self.glass = pygame.transform.scale(self.glass, (60, 100))
+
+        self.spots = {(90, 525) : self.alcs['Пиво'], (0, 525) : self.alcs['Водка']}
+        self.spot_size = (80, 150)
+
+        self.coctail_active = False
 
         self.free_places = {
             1 : None,
@@ -63,10 +83,20 @@ class Game:
 
                 elif i.type == pygame.MOUSEBUTTONUP:
                     pos = i.pos
-                    #self.player.take()
+                    for s in self.spots.keys():
+                        if (s[0] <= pos[0] <= s[0] + self.spot_size[0]
+                                and s[1] <= pos[1] <= s[1] + self.spot_size[1]):
+                            self.player.take(self.spots[s])
+
+                            if self.spots[s].name == 'Пиво':
+                                self.coctail_active = self.beer
+                            else:
+                                self.coctail_active = self.vodka
 
             self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
-            self.screen.blit(self.back, (0, -HEIGHT / 2))
+            pygame.display.toggle_fullscreen()
+
+            self.screen.blit(self.back, (0, 0))
 
             for student in self.students:
                 if None in self.free_places.values():
@@ -82,11 +112,22 @@ class Game:
 
                 student.img = pygame.transform.scale(student.img, (200, 300))
                 self.screen.blit(student.img, student.coord)
+                self.screen.blit(self.cloud, (student.coord[0] + 100, student.coord[1] - 100))
 
                 if student.coord != self.places[student.position]:
                     student.coord = (student.coord[0] + 10, student.coord[1])
 
             self.screen.blit(self.bar_img, (0, 0))
+
+            self.screen.blit(self.alco_spot, (90, 525))
+            self.screen.blit(self.alco_spot, (0, 525))
+
+            self.screen.blit(self.beer, (100, 550))
+            self.screen.blit(self.vodka, (10, 550))
+
+            if self.coctail_active:
+                self.screen.blit(self.coctail_active, (500, 350))
+
             pygame.display.update()
 
             pygame.time.Clock().tick(120) #60 frames per second

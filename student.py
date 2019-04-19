@@ -33,15 +33,13 @@ class Coctail:
 
 
 class Student:
-    def __init__(self, happiness, alco_lvl, max_alco, img):
+    def __init__(self, happiness, alco_lvl, max_alco, img, wish):
         self.happiness = happiness
         self.alco_lvl = alco_lvl
         self.max_alco = max_alco
         self.img = img
-        self.wish = None
+        self.wish = wish
         self.waiting = 0
-
-
 
         self.position = None
 
