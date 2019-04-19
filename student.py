@@ -33,12 +33,11 @@ class Coctail:
         return lvl * self.volume
 
 
-class Student():
-    def __init__(self):
-        self.happiness = 0
-        self.alco_lvl = 0
-        self.max_alco = 25
-
+class Student:
+    def __init__(self, happiness, alco_lvl, max_alco):
+        self.happiness = happiness
+        self.alco_lvl = alco_lvl
+        self.max_alco = max_alco
 
     def add_alco(self, coctail):
         curr_alco = self.alco_lvl + coctail.level

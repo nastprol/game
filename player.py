@@ -1,3 +1,6 @@
+from student import Alcohol
+
+
 class Player:
 
     def __init__(self, bar):

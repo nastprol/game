@@ -12,6 +12,6 @@ class Bar:
             if a.count < 0:
                 raise Exception
 
-            coctail[a] += 1
+            coctail[a.name] += 1
         return coctail
 

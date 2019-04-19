@@ -12,14 +12,27 @@ class Event:
             'Пиво' : Alcohol('Пиво', 2, 5, 'kkdfgkldf'),
             'Кола' : Alcohol('Кола', 0, 9, 'dfgdfg'),
         }
-        self.students = [] #add students
-        alcs = []
-        self.bar = Bar(alcs)
+        self.students = [Student(0, 0, 50), Student(20, 20, 99)] #add students
+
+        self.free_places = {
+            1 : None,
+            2 : None,
+            3 : None
+        }
+
+        self.bar = Bar(list(alcs.values()))
         self.player = Player(self.bar)
+
+    @property
+    def happiness(self):
+        h = 0
+        for s in self.students:
+            h += s.happiness
+        return h / len(self.students)
 
     def play(self):
         pygame.init()
-        pygame.display.set_mode((600,400), pygame.RESIZABLE)
+        pygame.display.set_mode((600, 400), pygame.RESIZABLE)
 
         pygame.display.update()
 
@@ -31,8 +44,6 @@ class Event:
                 elif i.type == pygame.MOUSEBUTTONUP:
                     pos = i.pos
                     self.player.take()
-
-
 
 
 if __name__ == "__main__":
