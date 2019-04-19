@@ -49,7 +49,7 @@ class Game:
 
         pygame.display.update()
         self.screen.blit(self.back, (0, -HEIGHT / 2))
-        self.screen.blit(self.bar_img, (0, 0))
+        
 
         while True:
             for i in pygame.event.get():
@@ -59,8 +59,17 @@ class Game:
                 elif i.type == pygame.MOUSEBUTTONUP:
                     pos = i.pos
                     #self.player.take()
+                i = 1
+                for student in self.students:
+                    student.img = pygame.transform.scale(student.img, (200, 300))
+                    self.screen.blit(student.img, (i * 200, 150))
+                    i += 1
+                self.screen.blit(self.bar_img, (0, 0))
                 pygame.display.update()
                 pygame.time.Clock().tick(60) #60 frames per second
+
+    def readkeys(self):
+        pass
 
 
 
