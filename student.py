@@ -1,4 +1,8 @@
 import pygame
+import random
+import math
+import time
+
 
 class Alcohol:
     def __init__(self, name, degree, level, path):
@@ -31,7 +35,7 @@ class Coctail:
         lvl = 0
         for name in self.alcohols:
             lvl += self.alcohols[name].degree * self.counts[name]
-        return lvl
+        return lvl / self.volume
 
 
 class Student:
@@ -49,14 +53,14 @@ class Student:
 
     def add_alco(self, coctail):
         time.sleep(0.1)
-        curr_alco = self.alco_lvl + coctail.level
-        if curr_alco > self.max_alco:
+        curr_alco = self.alco_lvl + coctail.level * coctail.volume
+        if  curr_alco> self.max_alco:
             self.happiness = -1
 
         self.alco_lvl = curr_alco
         coef = (self.max_alco - curr_alco) / self.max_alco
 
-        self.happiness += coef * coctail.level
+        self.happiness += coef * coctail.level * (10 - abs(self.wish - coctail.level)) * 0.5
 
     def update(self):
         self.happiness -= 0.01
@@ -79,3 +83,6 @@ class Student:
         alco = self.progress_bar_alco
         pygame.draw.rect(screen, pygame.Color(255, 0, 0), happy)
         pygame.draw.rect(screen, pygame.Color(0, 255, 0), alco)
+
+    def new_lap(self):
+        self.wish = random.randint(0, 90)
