@@ -47,6 +47,7 @@ class Student:
         self.img = img
         self.wish = wish
         self.waiting = 0
+        self.alco_count=0.0
 
         self.position = None
 
@@ -55,6 +56,7 @@ class Student:
     def add_alco(self, coctail):
         time.sleep(0.1)
         curr_alco = self.alco_lvl + coctail.level * coctail.volume
+        self.alco_count +=coctail.volume
         if curr_alco > self.max_alco:
             self.happiness = -1
 
@@ -64,8 +66,8 @@ class Student:
         self.happiness += coef * coctail.level * coctail.volume * (10 - abs(self.wish - coctail.level)) * 0.5
 
     def update(self):
-        self.happiness -= 0.002
-        self.alco_lvl -= 0.2
+        self.happiness -= 0.02
+        self.alco_lvl -= 0.01
         if self.alco_lvl < 0:
             self.alco_lvl = 0
 

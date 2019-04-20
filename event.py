@@ -19,7 +19,7 @@ class Game:
 
 #Картинки
         st1_img = pygame.image.load('img/student1.png')
-        self.students = [Student(0, 0, 50, st1_img, 30), Student(20, 20, 99, pygame.image.load('img/student2.png'), 40)] #add students
+        self.students = [Student(10, 5, 50, st1_img, 30), Student(20, 20, 99, pygame.image.load('img/student2.png'), 40)] #add students
         self.active_students = []
 
         self.back = pygame.image.load('img/back.png')
@@ -49,6 +49,7 @@ class Game:
 
         self.game_over = False
 
+#Места для игроко
         self.free_places = {
             1 : None,
             2 : None,
@@ -63,20 +64,21 @@ class Game:
 
         self.bar = Bar(list(self.alcs.values()))
         self.player = Player(self.bar)
-
+#всех студентов перепроверил
     def update(self):
         for student in self.students:
             student.update()
-
+#Общее счастье
     @property
     def happiness(self):
         h = 0
         for s in self.students:
             h += s.happiness
         return h / len(self.students)
-
+#Инициализация
     def play(self):
         pygame.init()
+        l = 0
 
         self.students[0].coord = (-300, 100)
 
@@ -137,9 +139,14 @@ class Game:
 
                 pygame.font.init()
                 myfont = pygame.font.SysFont('Comic Sans MS', 30)
+                myfont2 = pygame.font.SysFont('Comic Sans MS', 50)
                 textsurface = myfont.render(str(student.wish), False, (0, 0, 0))
+                haha = myfont2.render('АхХАХАаХА', False, (0, 0, 0))
                 
                 self.screen.blit(textsurface, (student.coord[0] + 175, student.coord[1] - 30))
+                l = (l + 5) % 1024
+                self.screen.blit(haha, (l, 25))
+
                 
 
                 student.draw(self.screen)
@@ -151,6 +158,10 @@ class Game:
 
             self.screen.blit(self.beer, (105, 515))
             self.screen.blit(self.vodka, (15, 515))
+            
+            if self.curr_coctail:
+                    current = myfont.render(str(round(self.curr_coctail.level, 2)), False, (0,0,0))
+                    self.screen.blit(current, (510, 360))
 
             if self.coctail_active:
                 self.screen.blit(self.glass, (450, 285))
