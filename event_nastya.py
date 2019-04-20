@@ -27,17 +27,17 @@ class Game:
             Student(20, 20, 99, pygame.image.load('img/student2.png'), 40),
         ]
 
+        # Картинки
+
         self.progressBar = []
-            for i in range(15):
-                self.progressBar.append(pygame.image.load(f'img/marking_{i}.png'))
+        for i in range(15):
+            self.progressBar.append(pygame.image.load(f'img/marking_{i}.png'))
 
         self.students = []
         for i in range(5):
             self.students.append(random.choice(self.student_type).clone(wish=random.randint(10, 40)))
         self.active_students = []
-        self.finished_students = []
 
-        # Картинки
         self.back = pygame.image.load('img/back.png')
         self.cloud = pygame.image.load('img/cloud.png')
         self.cloud = pygame.transform.scale(self.cloud, (90, 90))
@@ -64,6 +64,7 @@ class Game:
         self.spot_size = (80, 150)
 
         self.curr_coctail = None
+
         self.game_over = False
 
         # Места для игроков
@@ -72,7 +73,6 @@ class Game:
             2: None,
             3: None
         }
-
         self.places = {
             1: (100, 100),
             2: (300, 100),
@@ -111,11 +111,10 @@ class Game:
         return h / len(self.students)
 
     def finish_student(self, st):
+        i = None
         if st in self.active_students:
             self.active_students.remove(st)
-            finished_students.append(st)
         st.finished = True
-        
 
         self.free_places[st.position] = None
         st.position = None
@@ -138,6 +137,7 @@ class Game:
                     st.add_alco(self.curr_coctail)
 
                     self.finish_student(st)
+                    self.finished.append(st)
                     self.curr_coctail = None
 
     def get_free_places(self):

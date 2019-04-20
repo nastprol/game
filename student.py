@@ -41,22 +41,26 @@ class Coctail:
 
 class Student:
     def __init__(self, happiness, alco_lvl, max_alco, img, wish):
-        self.happiness = happiness
+        self.happiness = 100
         self.alco_lvl = alco_lvl
         self.max_alco = max_alco
         self.img = img
         self.wish = wish
         self.waiting = 0
-        self.alco_count=0.0
+        self.alco_count = 0.0
+        self.inBar = False
+
+        self.finished = False
 
         self.position = None
 
         self.coord = (0, 100)
+        self.timer = 20
 
     def add_alco(self, coctail):
         time.sleep(0.1)
         curr_alco = self.alco_lvl + coctail.level * coctail.volume
-        self.alco_count +=coctail.volume
+        self.alco_count += coctail.volume
         if curr_alco > self.max_alco:
             self.happiness = -1
 
@@ -66,6 +70,8 @@ class Student:
         self.happiness += coef * coctail.level * coctail.volume * (10 - abs(self.wish - coctail.level)) * 0.5
 
     def update(self):
+
+        self.timer -= 60 / 1000
         self.happiness -= 0.02
         self.alco_lvl -= 0.01
         if self.alco_lvl < 0:
@@ -91,3 +97,16 @@ class Student:
 
     def new_lap(self):
         self.wish = random.randint(0, 90)
+        self.finished = False
+
+    def clone(self, happiness=None, alco_lvl=None, max_alco=None, wish=None):
+        if happiness is None:
+            happiness = self.happiness
+        if alco_lvl is None:
+            alco_lvl = self.alco_lvl
+        if max_alco is None:
+            max_alco = self.max_alco
+        if wish is None:
+            wish = self.wish
+
+        return Student(happiness, alco_lvl, max_alco, self.img, wish)
