@@ -1,0 +1,266 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000000007524a1a8, pid=23568, tid=0x0000000000004158
+#
+# JRE version: OpenJDK Runtime Environment (8.0_152-b26) (build 1.8.0_152-release-1343-b26)
+# Java VM: OpenJDK 64-Bit Server VM (25.152-b26 mixed mode windows-amd64 compressed oops)
+# Problematic frame:
+# V  [jvm.dll+0x43a1a8]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000016a31800):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=16728, stack(0x00000000173a0000,0x00000000174a0000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x000000000000001b
+
+Registers:
+RAX=0x0000000016b67810, RBX=0x000000001749e4a0, RCX=0x000000009d79d00c, RDX=0x0000000016b69810
+RSP=0x000000001749e290, RBP=0x0000000000000010, RSI=0x000000000000018d, RDI=0x0000000017d2ec48
+R8 =0x0000000000000004, R9 =0x0000000000001000, R10=0x0000000000000000, R11=0x0000000016b69820
+R12=0x0000000000000000, R13=0xffffffffffffffff, R14=0x0000000000000125, R15=0x0000000000000928
+RIP=0x000000007524a1a8, EFLAGS=0x0000000000010293
+
+Top of Stack: (sp=0x000000001749e290)
+0x000000001749e290:   000000001749e4a0 000000000000000c
+0x000000001749e2a0:   000000001749ef60 00000000752e8b86
+0x000000001749e2b0:   00000000753b9328 000000001749ef60
+0x000000001749e2c0:   0000000016c089d0 000000001749e4f0
+0x000000001749e2d0:   0000000015fc1290 00000000752e9969
+0x000000001749e2e0:   000000001749e3e0 000000001749e490
+0x000000001749e2f0:   00000000000083b0 0000000016d241c0
+0x000000001749e300:   0000000016c109b8 0000000075252092
+0x000000001749e310:   0000000015fc1290 000000001749e410
+0x000000001749e320:   0000000016c0f900 0000000016c089d0
+0x000000001749e330:   0000000000000000 000000001749f770
+0x000000001749e340:   000000000000000e 0000000016d27ec0
+0x000000001749e350:   000000001749f900 000000001749f918
+0x000000001749e360:   0000000015fcd200 0000000000000004
+0x000000001749e370:   0000000000000000 0000000000000000
+0x000000001749e380:   0000000000000002 0000000000000000 
+
+Instructions: (pc=0x000000007524a1a8)
+0x000000007524a188:   6c 24 60 4c 89 7c 24 20 45 33 ff 66 66 66 66 66
+0x000000007524a198:   0f 1f 84 00 00 00 00 00 48 8b 43 10 4d 8b 2c 07
+0x000000007524a1a8:   41 8b 45 1c 85 c0 0f 84 92 00 00 00 33 ed 44 8b
+0x000000007524a1b8:   e0 0f 1f 80 00 00 00 00 49 8b 45 08 48 8b 3c 28 
+
+
+Register to memory mapping:
+
+RAX=0x0000000016b67810 is an unknown value
+RBX=0x000000001749e4a0 is pointing into the stack for thread: 0x0000000016a31800
+RCX=0x000000009d79d00c is an unknown value
+RDX=0x0000000016b69810 is an unknown value
+RSP=0x000000001749e290 is pointing into the stack for thread: 0x0000000016a31800
+RBP=0x0000000000000010 is an unknown value
+RSI=0x000000000000018d is an unknown value
+RDI=0x0000000017d2ec48 is an unknown value
+R8 =0x0000000000000004 is an unknown value
+R9 =0x0000000000001000 is an unknown value
+R10=0x0000000000000000 is an unknown value
+R11=0x0000000016b69820 is an unknown value
+R12=0x0000000000000000 is an unknown value
+R13=0xffffffffffffffff is an unknown value
+R14=0x0000000000000125 is an unknown value
+R15=0x0000000000000928 is an unknown value
+
+
+Stack: [0x00000000173a0000,0x00000000174a0000],  sp=0x000000001749e290,  free space=1016k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x43a1a8]
+V  [jvm.dll+0x4d9969]
+V  [jvm.dll+0x442092]
+V  [jvm.dll+0x4251f2]
+V  [jvm.dll+0x814d8]
+V  [jvm.dll+0x81e0f]
+V  [jvm.dll+0x21d59f]
+V  [jvm.dll+0x26d99a]
+C  [MSVCR100.dll+0x21d9f]
+C  [MSVCR100.dll+0x21e3b]
+C  [KERNEL32.DLL+0x14034]
+C  [ntdll.dll+0x73691]
+
+
+Current CompileTask:
+C2:    506  488       4       java.util.HashMap::putVal (300 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000017d17800 JavaThread "WinLauncher external command processing thread" [_thread_in_native, id=16588, stack(0x00000000179a0000,0x0000000017aa0000)]
+  0x0000000016ac9800 JavaThread "Service Thread" daemon [_thread_blocked, id=18592, stack(0x00000000177a0000,0x00000000178a0000)]
+  0x0000000016a37800 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=20740, stack(0x00000000176a0000,0x00000000177a0000)]
+  0x0000000016a35800 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=332, stack(0x00000000175a0000,0x00000000176a0000)]
+  0x0000000016a34800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=18508, stack(0x00000000174a0000,0x00000000175a0000)]
+=>0x0000000016a31800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=16728, stack(0x00000000173a0000,0x00000000174a0000)]
+  0x0000000016a30800 JavaThread "Attach Listener" daemon [_thread_blocked, id=12304, stack(0x00000000172a0000,0x00000000173a0000)]
+  0x0000000016a28800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=5904, stack(0x00000000171a0000,0x00000000172a0000)]
+  0x0000000016a27800 JavaThread "Surrogate Locker Thread (Concurrent GC)" daemon [_thread_blocked, id=8968, stack(0x00000000170a0000,0x00000000171a0000)]
+  0x0000000016a14000 JavaThread "Finalizer" daemon [_thread_blocked, id=8232, stack(0x0000000016ea0000,0x0000000016fa0000)]
+  0x0000000015fcb000 JavaThread "Reference Handler" daemon [_thread_blocked, id=22776, stack(0x0000000016da0000,0x0000000016ea0000)]
+  0x00000000024ae800 JavaThread "main" [_thread_in_native, id=20376, stack(0x0000000000050000,0x0000000000150000)]
+
+Other Threads:
+  0x0000000015fc2000 VMThread [stack: 0x00000000167d0000,0x00000000168d0000] [id=11760]
+  0x0000000016acc000 WatcherThread [stack: 0x00000000178a0000,0x00000000179a0000] [id=10332]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ par new generation   total 39296K, used 17094K [0x00000000d1200000, 0x00000000d3ca0000, 0x00000000e0c00000)
+  eden space 34944K,  48% used [0x00000000d1200000, 0x00000000d22b1bc8, 0x00000000d3420000)
+  from space 4352K,   0% used [0x00000000d3420000, 0x00000000d3420000, 0x00000000d3860000)
+  to   space 4352K,   0% used [0x00000000d3860000, 0x00000000d3860000, 0x00000000d3ca0000)
+ concurrent mark-sweep generation total 87424K, used 0K [0x00000000e0c00000, 0x00000000e6160000, 0x0000000100000000)
+ Metaspace       used 6005K, capacity 6215K, committed 6400K, reserved 1056768K
+  class space    used 631K, capacity 729K, committed 768K, reserved 1048576K
+
+Card table byte_map: [0x0000000011f70000,0x00000000120f0000] byte_map_base: 0x00000000118e7000
+
+Marking Bits: (CMSBitMap*) 0x000000000220b888
+ Bits: [0x0000000012a70000, 0x0000000013240000)
+
+Mod Union Table: (CMSBitMap*) 0x000000000220b948
+ Bits: [0x0000000002130000, 0x000000000214f400)
+
+Polling page: 0x0000000002100000
+
+CodeCache: size=245760Kb used=2179Kb max_used=2203Kb free=243580Kb
+ bounds [0x00000000024b0000, 0x0000000002720000, 0x00000000114b0000]
+ total_blobs=766 nmethods=492 adapters=188
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.292 Thread 0x0000000016a37800  492       3       java.nio.HeapByteBuffer::put (16 bytes)
+Event: 0.292 Thread 0x0000000016a37800 nmethod 492 0x00000000026bbe50 code [0x00000000026bbfe0, 0x00000000026bc388]
+Event: 0.292 Thread 0x0000000016a37800  493       3       java.nio.Buffer::nextPutIndex (31 bytes)
+Event: 0.292 Thread 0x0000000016a37800 nmethod 493 0x00000000026ba010 code [0x00000000026ba180, 0x00000000026ba388]
+Event: 0.303 Thread 0x0000000016a34800 nmethod 477 0x00000000026ccb50 code [0x00000000026ccd20, 0x00000000026cdc50]
+Event: 0.303 Thread 0x0000000016a34800  489       4       java.util.HashMap::put (13 bytes)
+Event: 0.311 Thread 0x0000000016a34800 nmethod 489 0x00000000026ceb10 code [0x00000000026cece0, 0x00000000026cf738]
+Event: 0.311 Thread 0x0000000016a34800  482       4       java.util.HashMap::newNode (13 bytes)
+Event: 0.312 Thread 0x0000000016a34800 nmethod 482 0x00000000026c7090 code [0x00000000026c71e0, 0x00000000026c72f8]
+Event: 0.360 Thread 0x0000000016a35800 nmethod 479 0x00000000026d4b50 code [0x00000000026d4e80, 0x00000000026d8170]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (3 events):
+Event: 0.217 Thread 0x00000000024ae800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002651db8 method=java.lang.String.replace(CC)Ljava/lang/String; @ 2
+Event: 0.242 Thread 0x00000000024ae800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000267cbc8 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 25
+Event: 0.292 Thread 0x00000000024ae800 Uncommon trap: reason=null_check action=maybe_recompile pc=0x00000000026c9870 method=java.lang.String.<init>([CII)V @ 52
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.142 Thread 0x00000000024ae800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d14c8e20) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\prims\jvm.cpp, line 1390]
+Event: 0.142 Thread 0x00000000024ae800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d14ccb90) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\prims\jvm.cpp, line 1390]
+Event: 0.142 Thread 0x00000000024ae800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d14ccda0) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\prims\jvm.cpp, line 1390]
+Event: 0.142 Thread 0x00000000024ae800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d14ce360) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\prims\jvm.cpp, line 1390]
+Event: 0.142 Thread 0x00000000024ae800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d14ce570) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\prims\jvm.cpp, line 1390]
+Event: 0.292 Thread 0x00000000024ae800 Implicit null exception at 0x00000000026c9164 to 0x00000000026c9865
+Event: 0.292 Thread 0x00000000024ae800 Exception <[I> (0x00000000d1293318) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\runtime\objectMonitor.cpp, line 1818]
+Event: 0.292 Thread 0x00000000024ae800 Exception <[I> (0x00000000d1293318) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\oops\instanceKlass.cpp, line 915]
+Event: 0.292 Thread 0x00000000024ae800 Exception <[I: 0> (0x00000000d1293318) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\prims\jni.cpp, line 3516]
+Event: 0.293 Thread 0x0000000017d17800 Exception <a 'java/lang/IllegalArgumentException': argument type mismatch> (0x00000000d2203800) thrown at [C:\BuildAgent\work\9f979a2e38bdaf6\hotspot\src\share\vm\runtime\reflection.cpp, line 1064]
+
+Events (10 events):
+Event: 0.265 Thread 0x00000000024ae800 DEOPT PACKING pc=0x0000000002696b3a sp=0x000000000014e150
+Event: 0.265 Thread 0x00000000024ae800 DEOPT UNPACKING pc=0x00000000024f75d0 sp=0x000000000014dfd0 mode 0
+Event: 0.266 Thread 0x00000000024ae800 DEOPT PACKING pc=0x0000000002696b3a sp=0x000000000014e150
+Event: 0.266 Thread 0x00000000024ae800 DEOPT UNPACKING pc=0x00000000024f75d0 sp=0x000000000014dfd0 mode 0
+Event: 0.292 Thread 0x0000000017d17800 Thread added: 0x0000000017d17800
+Event: 0.292 loading class java/lang/ArrayIndexOutOfBoundsException
+Event: 0.292 Thread 0x00000000024ae800 Uncommon trap: trap_request=0xfffffff6 fr.pc=0x00000000026c9870
+Event: 0.292 Thread 0x00000000024ae800 DEOPT PACKING pc=0x00000000026c9870 sp=0x000000000014e570
+Event: 0.292 Thread 0x00000000024ae800 DEOPT UNPACKING pc=0x00000000024f557b sp=0x000000000014e458 mode 2
+Event: 0.292 loading class java/lang/ArrayIndexOutOfBoundsException done
+
+
+Dynamic libraries:
+0x0000000140000000 - 0x0000000140147000 	D:\Program Files\JetBrains\PyCharm 2018.3.3\bin\pycharm64.exe
+0x00007fffe0050000 - 0x00007fffe0231000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007fffddf90000 - 0x00007fffde041000 	C:\Windows\System32\KERNEL32.DLL
+0x00007fffdd160000 - 0x00007fffdd3d3000 	C:\Windows\System32\KERNELBASE.dll
+0x00007fffde470000 - 0x00007fffde600000 	C:\Windows\System32\USER32.dll
+0x00007fffdce70000 - 0x00007fffdce90000 	C:\Windows\System32\win32u.dll
+0x00007fffdfe90000 - 0x00007fffdfeb8000 	C:\Windows\System32\GDI32.dll
+0x00007fffdcb30000 - 0x00007fffdccc2000 	C:\Windows\System32\gdi32full.dll
+0x00007fffdccd0000 - 0x00007fffdcd6f000 	C:\Windows\System32\msvcp_win.dll
+0x00007fffdcd70000 - 0x00007fffdce68000 	C:\Windows\System32\ucrtbase.dll
+0x00007fffdfde0000 - 0x00007fffdfe81000 	C:\Windows\System32\ADVAPI32.dll
+0x00007fffdd660000 - 0x00007fffdd6fe000 	C:\Windows\System32\msvcrt.dll
+0x00007fffdd600000 - 0x00007fffdd65b000 	C:\Windows\System32\sechost.dll
+0x00007fffdfa60000 - 0x00007fffdfb84000 	C:\Windows\System32\RPCRT4.dll
+0x00007fffde620000 - 0x00007fffdfa60000 	C:\Windows\System32\SHELL32.dll
+0x00007fffdd490000 - 0x00007fffdd4d9000 	C:\Windows\System32\cfgmgr32.dll
+0x00007fffdd550000 - 0x00007fffdd5f9000 	C:\Windows\System32\shcore.dll
+0x00007fffde140000 - 0x00007fffde462000 	C:\Windows\System32\combase.dll
+0x00007fffdcef0000 - 0x00007fffdcf6a000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007fffdc420000 - 0x00007fffdcb2d000 	C:\Windows\System32\windows.storage.dll
+0x00007fffdd4e0000 - 0x00007fffdd531000 	C:\Windows\System32\shlwapi.dll
+0x00007fffdc400000 - 0x00007fffdc411000 	C:\Windows\System32\kernel.appcore.dll
+0x00007fffdc3e0000 - 0x00007fffdc3ff000 	C:\Windows\System32\profapi.dll
+0x00007fffdc370000 - 0x00007fffdc3bc000 	C:\Windows\System32\powrprof.dll
+0x00007fffdc360000 - 0x00007fffdc36a000 	C:\Windows\System32\FLTLIB.DLL
+0x00007fffdfd30000 - 0x00007fffdfd5d000 	C:\Windows\System32\IMM32.DLL
+0x0000000074e10000 - 0x0000000075651000 	D:\Program Files\JetBrains\PyCharm 2018.3.3\jre64\bin\server\jvm.dll
+0x00007fffdd540000 - 0x00007fffdd548000 	C:\Windows\System32\PSAPI.DLL
+0x00007fffd9ba0000 - 0x00007fffd9bc3000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007fffd1a80000 - 0x00007fffd1a89000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007fffd7d40000 - 0x00007fffd7d4a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007fffdfd60000 - 0x00007fffdfdcc000 	C:\Windows\System32\WS2_32.dll
+0x0000000074d30000 - 0x0000000074e02000 	C:\Windows\SYSTEM32\MSVCR100.dll
+0x00007fffd9890000 - 0x00007fffd98ba000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007fffcf080000 - 0x00007fffcf08f000 	D:\Program Files\JetBrains\PyCharm 2018.3.3\jre64\bin\verify.dll
+0x00007fffc6c70000 - 0x00007fffc6c99000 	D:\Program Files\JetBrains\PyCharm 2018.3.3\jre64\bin\java.dll
+0x00007fffc6af0000 - 0x00007fffc6b06000 	D:\Program Files\JetBrains\PyCharm 2018.3.3\jre64\bin\zip.dll
+0x00007fffda4d0000 - 0x00007fffda568000 	C:\Windows\system32\uxtheme.dll
+0x00007fffdd9c0000 - 0x00007fffddb33000 	C:\Windows\System32\MSCTF.dll
+0x00007fffdd7e0000 - 0x00007fffdd8a2000 	C:\Windows\System32\OLEAUT32.dll
+0x00007fffda760000 - 0x00007fffda789000 	C:\Windows\system32\dwmapi.dll
+0x00007fffcfeb0000 - 0x00007fffcff46000 	C:\Windows\System32\TextInputFramework.dll
+0x00007fffd9bd0000 - 0x00007fffd9caa000 	C:\Windows\System32\CoreMessaging.dll
+0x00007fffd7430000 - 0x00007fffd774e000 	C:\Windows\System32\CoreUIComponents.dll
+0x00007fffd8bd0000 - 0x00007fffd8d1d000 	C:\Windows\SYSTEM32\wintypes.dll
+0x00007fffdb430000 - 0x00007fffdb461000 	C:\Windows\SYSTEM32\ntmarta.dll
+0x00007fffdada0000 - 0x00007fffdaf69000 	C:\Windows\SYSTEM32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Xms128m -Xmx750m -XX:ReservedCodeCacheSize=240m -XX:+UseConcMarkSweepGC -XX:SoftRefLRUPolicyMSPerMB=50 -ea -Dsun.io.useCanonCaches=false -Djava.net.preferIPv4Stack=true -Djdk.http.auth.tunneling.disabledSchemes="" -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -Djb.vmOptionsFile=D:\Program Files\JetBrains\PyCharm 2018.3.3\bin\pycharm64.exe.vmoptions -Didea.platform.prefix=Python -Dide.native.launcher=true -Didea.paths.selector=PyCharm2018.3 -XX:ErrorFile=C:\Users\!5@359\java_error_in_pycharm_%p.log -XX:HeapDumpPath=C:\Users\!5@359\java_error_in_pycharm.hprof 
+java_command: <unknown>
+java_class_path (initial): D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\bootstrap.jar;D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\extensions.jar;D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\util.jar;D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\jdom.jar;D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\log4j.jar;D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\trove4j.jar;D:\Program Files\JetBrains\PyCharm 2018.3.3\lib\jna.jar
+Launcher Type: generic
+
+Environment Variables:
+PATH=C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;D:\Program Files\WinAVR\bin;D:\Program Files\WinAVR\utils\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\Program Files\ImageMagick-7.0.8;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;D:\Program Files\nodejs\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;D:\Program Files\Git\cmd;C:\Users\Сергей\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\Сергей\AppData\Local\Programs\Python\Python36-32\;C:\Users\Сергей\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\Сергей\AppData\Local\Programs\Python\Python37-32\;C:\Users\Сергей\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;C:\Users\Сергей\AppData\Roaming\npm;D:\Program Files (x86)\GnuWin32\bin;;D:\Program Files\JetBrains\PyCharm 2018.3.3\bin;
+USERNAME=Сергей
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17134 (10.0.17134.706)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 158 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8193348k(3341656k free), swap 13707768k(5856928k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.152-b26) for windows-amd64 JRE (1.8.0_152-release-1343-b26), built on Nov 29 2018 17:33:07 by "builduser" with MS VC++ 10.0 (VS2010)
+
+time: Sat Apr 20 06:44:53 2019
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

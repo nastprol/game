@@ -9,7 +9,7 @@ class Alcohol:
         self.name = name
         self.degree = degree
         self.img = path
-        self.count = level
+        self.count = 1000
 
 
 class Coctail:
@@ -35,6 +35,7 @@ class Coctail:
         lvl = 0
         for name in self.alcohols:
             lvl += self.alcohols[name].degree * self.counts[name]
+
         return lvl / self.volume
 
 
@@ -54,17 +55,19 @@ class Student:
     def add_alco(self, coctail):
         time.sleep(0.1)
         curr_alco = self.alco_lvl + coctail.level * coctail.volume
-        if  curr_alco> self.max_alco:
+        if curr_alco > self.max_alco:
             self.happiness = -1
 
         self.alco_lvl = curr_alco
         coef = (self.max_alco - curr_alco) / self.max_alco
 
-        self.happiness += coef * coctail.level * (10 - abs(self.wish - coctail.level)) * 0.5
+        self.happiness += coef * coctail.level * coctail.volume * (10 - abs(self.wish - coctail.level)) * 0.5
 
     def update(self):
-        self.happiness -= 0.01
+        self.happiness -= 0.002
         self.alco_lvl -= 0.2
+        if self.alco_lvl < 0:
+            self.alco_lvl = 0
 
     @property
     def progress_bar_happy(self):
@@ -77,7 +80,7 @@ class Student:
         max_height = 80
         height = int(max_height * self.alco_lvl / self.max_alco)
         return pygame.Rect(self.coord[0] + 200, self.coord[1] + 50 + max_height - height, 20, height)
-    
+
     def draw(self, screen):
         happy = self.progress_bar_happy
         alco = self.progress_bar_alco
