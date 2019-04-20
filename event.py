@@ -20,13 +20,13 @@ class Game:
         self.students = [Student(0, 0, 50, pygame.image.load('img/student1.png'), 30), Student(20, 20, 99, pygame.image.load('img/student2.png'), 40)] #add students
         self.active_students = []
 
-        self.back = pygame.image.load('img/Oblivion_1920x1080.jpg')
+        self.back = pygame.image.load('img/back.png')
         self.cloud = pygame.image.load('img/cloud.png')
         self.cloud = pygame.transform.scale(self.cloud, (90, 90))
 
         self.back = pygame.transform.scale(self.back, (WIDTH, HEIGHT))
         self.bar_img = pygame.image.load('img/bar.png')
-        self.bar_img = pygame.transform.scale(self.bar_img, (WIDTH, HEIGHT))
+        self.bar_img = pygame.transform.scale(self.bar_img, (WIDTH, HEIGHT - 60))
 
         self.alco_spot = pygame.image.load('img/alco_spot.png')
         self.alco_spot = pygame.transform.scale(self.alco_spot, (80, 150))
@@ -113,11 +113,12 @@ class Game:
                 student.img = pygame.transform.scale(student.img, (200, 300))
                 self.screen.blit(student.img, student.coord)
                 self.screen.blit(self.cloud, (student.coord[0] + 100, student.coord[1] - 100))
+                student.draw(self.screen)
 
                 if student.coord != self.places[student.position]:
                     student.coord = (student.coord[0] + 10, student.coord[1])
 
-            self.screen.blit(self.bar_img, (0, 0))
+            self.screen.blit(self.bar_img, (0, 60))
 
             self.screen.blit(self.alco_spot, (90, 525))
             self.screen.blit(self.alco_spot, (0, 525))

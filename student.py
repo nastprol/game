@@ -1,3 +1,5 @@
+import pygame
+
 class Alcohol:
     def __init__(self, name, degree, level, path):
         self.name = name
@@ -46,6 +48,7 @@ class Student:
         self.coord = (0, 100)
 
     def add_alco(self, coctail):
+        time.sleep(0.1)
         curr_alco = self.alco_lvl + coctail.level
         if curr_alco > self.max_alco:
             self.happiness = -1
@@ -58,3 +61,21 @@ class Student:
     def update(self):
         self.happiness -= 0.01
         self.alco_lvl -= 0.2
+
+    @property
+    def progress_bar_happy(self):
+        max_height = 80
+        height = int(max_height * self.happiness / 100)
+        return pygame.Rect(self.coord[0] + 180, self.coord[1] + 50 + max_height - height, 20, height)
+
+    @property
+    def progress_bar_alco(self):
+        max_height = 80
+        height = int(max_height * self.alco_lvl / self.max_alco)
+        return pygame.Rect(self.coord[0] + 200, self.coord[1] + 50 + max_height - height, 20, height)
+    
+    def draw(self, screen):
+        happy = self.progress_bar_happy
+        alco = self.progress_bar_alco
+        pygame.draw.rect(screen, pygame.Color(255, 0, 0), happy)
+        pygame.draw.rect(screen, pygame.Color(0, 255, 0), alco)
